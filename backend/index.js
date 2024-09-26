@@ -326,6 +326,50 @@ app.post('/getcart', fetchUser, async (req, res) => {
     res.json(userData.cartData);
 })
 
+//  Shema for order list 
+
+const orderList = mongoose.model('orderList', {
+    customerName: {
+        type: String
+    },
+    address: {
+        type: String,
+    },
+    city: {
+        type: String,
+    },
+    pin: {
+        type: Number,
+    },
+    paymentMethod: {
+        type: String
+    },
+    qunantity: {
+        type: Number
+    },
+    total: {
+        type: Number
+    }
+})
+
+app.post('/addorderlist', async (req, res) => {
+    const order = new orderList({
+        customerName: req.body.customerName,
+        address: req.body.address,
+        city: req.body.city,
+        pin: req.body.pin,
+        paymentMethod: req.body.paymentMethod,
+        quantity: req.body.quantity,
+        total: req.body.total
+
+    })
+    await order.save();
+    console.log("Order list saved")
+    res.json({
+        success: true
+    })
+})
+
 app.listen(port, (err) => {
     if (!err) {
         console.log("Server running on Port " + port)

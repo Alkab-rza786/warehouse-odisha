@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './CartItems.css'
 import { ShopContext } from '../Components/Context/ShopContext'
 import remove_icon from '../assets/Frontend_Assets/cart_cross_icon.png'
-import { useNavigate } from 'react-router-dom';
 
 
 
@@ -10,7 +9,24 @@ function CartItems() {
 
 
     const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext)
-    const navigate = useNavigate();
+
+    const [order, setOrder] = useState({
+        customerName: "",
+        address: "",
+        city: "",
+        pin: "",
+        paymentMethod: "",
+        quantity: "",
+        total: getTotalCartAmount
+    })
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setOrder({ ...order, [name]: value })
+    }
+
+
+
     return (
         <div className='cartitems'>
             <div className="cartitems-format-main">
@@ -63,36 +79,36 @@ function CartItems() {
 
                     <button >PLACE ORDER</button>
                 </div>
-                
-                    
-                <form  className="place-order cartitems-promocode">
-      <div className="place-order-left cartitems-promocode">
-        <p className="title">Delivery Information</p>
-        <div className="multi-fields">
-         <input type="text" placeholder='Name' />
-         </div>
-         <input type="text" placeholder='Address' />
-         <div className="multi-fields">
-          <input type="text" placeholder='City' />
-         </div>
-         <div className="multi-fields">
-          <input type="text" placeholder='Pin Code' />
-         </div>
-         <div className="multi-fields">
-        <select name="payment" id="payment">
-            <option value="UPI">UPI</option>
-            <option value="UPI">Debit/Credit Card
-            </option>
-            <option value="UPI">Net Banking
-            </option>
-        </select>
-         </div>
-      </div>
-     
-    </form>
-                </div>
+
+
+                <form className="place-order cartitems-promocode">
+                    <div className="place-order-left cartitems-promocode">
+                        <p className="title">Delivery Information</p>
+                        <div className="multi-fields">
+                            <input type="text" placeholder='Name' />
+                        </div>
+                        <input type="text" placeholder='Address' />
+                        <div className="multi-fields">
+                            <input type="text" placeholder='City' />
+                        </div>
+                        <div className="multi-fields">
+                            <input type="text" placeholder='Pin Code' />
+                        </div>
+                        <div className="multi-fields">
+                            <select name="payment" id="payment">
+                                <option value="UPI">UPI</option>
+                                <option value="UPI">Debit/Credit Card
+                                </option>
+                                <option value="UPI">Net Banking
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                </form>
             </div>
-      
+        </div>
+
     )
 }
 
