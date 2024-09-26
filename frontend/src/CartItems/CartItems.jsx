@@ -2,13 +2,15 @@ import React, { useContext } from 'react'
 import './CartItems.css'
 import { ShopContext } from '../Components/Context/ShopContext'
 import remove_icon from '../assets/Frontend_Assets/cart_cross_icon.png'
+import { useNavigate } from 'react-router-dom';
+
 
 
 function CartItems() {
 
 
     const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext)
-
+    const navigate = useNavigate();
     return (
         <div className='cartitems'>
             <div className="cartitems-format-main">
@@ -59,17 +61,38 @@ function CartItems() {
                         </div>
                     </div>
 
-                    <button>PROCEED TO CHECKOUT</button>
+                    <button >PLACE ORDER</button>
                 </div>
-                <div className="cartitems-promocode">
-                    <p>If you have promocode, Enter here</p>
-                    <div className="cartitems-promobox">
-                        <input type="text" placeholder='promocode' />
-                        <button>Submit</button>
-                    </div>
+                
+                    
+                <form  className="place-order cartitems-promocode">
+      <div className="place-order-left cartitems-promocode">
+        <p className="title">Delivery Information</p>
+        <div className="multi-fields">
+         <input type="text" placeholder='Name' />
+         </div>
+         <input type="text" placeholder='Address' />
+         <div className="multi-fields">
+          <input type="text" placeholder='City' />
+         </div>
+         <div className="multi-fields">
+          <input type="text" placeholder='Pin Code' />
+         </div>
+         <div className="multi-fields">
+        <select name="payment" id="payment">
+            <option value="UPI">UPI</option>
+            <option value="UPI">Debit/Credit Card
+            </option>
+            <option value="UPI">Net Banking
+            </option>
+        </select>
+         </div>
+      </div>
+     
+    </form>
                 </div>
             </div>
-        </div>
+      
     )
 }
 

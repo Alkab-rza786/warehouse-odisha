@@ -10,6 +10,7 @@ import Footer from './Components/Footer/Footer'
 import men_banner from './assets/Frontend_Assets/banner_mens.png'
 import women_banner from './assets/Frontend_Assets/banner_women.png'
 import kid_banner from './assets/Frontend_Assets/banner_kids.png'
+import Order from './Components/Order/Order'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           </Route>
           <Route path='/cart' element={<Cart />} ></Route>
           <Route path='/login' element={<LoginSignUp />} ></Route>
+          <Route path='/order' element={<Order/>} ></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
