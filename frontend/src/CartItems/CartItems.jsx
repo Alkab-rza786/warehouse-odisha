@@ -64,9 +64,10 @@ function CartItems() {
                     <button >PLACE ORDER</button>
                 </div>
                 
+                <div className="cartitems-promocode">
                     
-                <form  className="place-order cartitems-promocode">
-      <div className="place-order-left cartitems-promocode">
+                <form  className="place-order ">
+      <div className="place-order-left ">
         <p className="title">Delivery Information</p>
         <div className="multi-fields">
          <input type="text" placeholder='Name' />
@@ -90,6 +91,8 @@ function CartItems() {
       </div>
      
     </form>
+    
+    </div>  
                 </div>
             </div>
       
