@@ -1,6 +1,6 @@
 import React from 'react'
 import './Offers.css'
-import exclusive_image from '../../assets/Frontend_Assets/exclusive_image.png'
+import exclusive_image from '../../assets/Frontend_Assets/Friz.png'
 
 function Offers() {
     return (

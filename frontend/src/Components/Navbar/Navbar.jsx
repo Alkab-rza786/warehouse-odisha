@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import './Navbar.css'
-import logo from '../../assets/Frontend_Assets/logo.png'
+import logo from '../../assets/Frontend_Assets/new_logo.png'
 import cart from '../../assets/Frontend_Assets/cart_icon.png'
 import { Link } from 'react-router-dom'
 import { ShopContext } from '../Context/ShopContext'
@@ -23,6 +23,7 @@ function Navbar() {
                 <li onClick={() => setMenu("men")} >  <Link to='/mens' >  Groceries  </Link> {menu === "men" ? <hr /> : ""}  </li>
                 <li onClick={() => setMenu("women")} >  <Link to='/womens' >  Electronics  </Link>  {menu === "women" ? <hr /> : ""}  </li>
                 <li onClick={() => setMenu("kids")} >  <Link to='/kids' >  Health and Beauty  </Link>  {menu === "kids" ? <hr /> : ""}  </li>
+                <li onClick={() => setMenu("orders")} >  <Link to='/myorders' >  My Orders  </Link>  {menu === "orders" ? <hr /> : ""}  </li>
             </ul>
 
             <div className="nav-login">

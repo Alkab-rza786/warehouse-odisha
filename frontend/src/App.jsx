@@ -7,9 +7,9 @@ import Product from './Components/Pages/Product'
 import LoginSignUp from './Components/Pages/LoginSignUp'
 import Cart from './Components/Pages/Cart'
 import Footer from './Components/Footer/Footer'
-import men_banner from './assets/Frontend_Assets/new_banner1.png'
-import women_banner from './assets/Frontend_Assets/new_banner2.png'
-import kid_banner from './assets/Frontend_Assets/banner_kids.png'
+import new_banner1 from './assets/Frontend_Assets/new_banner1.png'
+import new_banner2 from './assets/Frontend_Assets/new_banner2.png'
+import Health_beauty from './assets/Frontend_Assets/Health_beauty.png'
 import Orderuser from './Components/OrderUser/Orderuser'
 
 
@@ -20,9 +20,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Shop />} ></Route>
-          <Route path='/mens' element={<ShopCategory category="men" banner={men_banner} />}  ></Route>
-          <Route path='/womens' element={<ShopCategory category="women" banner={women_banner} />} ></Route>
-          <Route path='/kids' element={<ShopCategory category="kid" banner={kid_banner} />}  ></Route>
+          <Route path='/mens' element={<ShopCategory category="men" banner={new_banner1} />}  ></Route>
+          <Route path='/womens' element={<ShopCategory category="women" banner={new_banner2} />} ></Route>
+          <Route path='/kids' element={<ShopCategory category="kid" banner={Health_beauty} />}  ></Route>
           <Route path='/myorders' element={<Orderuser/>}  ></Route>
 
           <Route path='/product' element={<Product />} >
