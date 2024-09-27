@@ -344,7 +344,7 @@ const orderList = mongoose.model('orderList', {
     paymentMethod: {
         type: String
     },
-    qunantity: {
+    quantity: {
         type: Number
     },
     total: {
