@@ -14,7 +14,7 @@ app.use(cors())
 
 // DATabase connection with mongo db
 
-mongoose.connect("mongodb://localhost:27017/e-commerce");
+mongoose.connect("mongodb+srv://alkab:alkab123@cluster0.zpdqm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 
 // API creation
 
