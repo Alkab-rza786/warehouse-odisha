@@ -19,7 +19,7 @@ const Orderuser = () => {
                 <li onClick={() => handleStepClick(0)}>
                     <i className="icon uil uil-capture"></i>
                     <div className={`progress one ${activeStep >= 0 ? 'active' : ''}`}>
-                        <p>1</p>
+                        <p >1</p>
                         <i className="uil uil-check"></i>
                     </div>
                     <p className="text">Add To Cart</p>

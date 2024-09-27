@@ -15,9 +15,9 @@ app.use(cors());
 
 // Cloudinary configuration
 cloudinary.config({
-    cloud_name:"dqbixsjof" ,
-    api_key:"241939828153228" ,
-    api_secret:"MUkbTQkwdZD9PWgTj9giFYnDvlg" ,
+    cloud_name: "dqbixsjof",
+    api_key: "241939828153228",
+    api_secret: "MUkbTQkwdZD9PWgTj9giFYnDvlg",
 });
 
 // Database connection with MongoDB
@@ -300,46 +300,108 @@ app.post('/getcart', fetchUser, async (req, res) => {
 });
 
 // Schema for order list
-const orderList = mongoose.model('orderList', {
-    customerName: {
-        type: String
-    },
-    address: {
-        type: String,
-    },
-    city: {
-        type: String,
-    },
-    pin: {
-        type: Number,
-    },
-    paymentMethod: {
-        type: String
-    },
-    quantity: {
-        type: Number
-    },
-    total: {
-        type: Number
-    }
-});
+// const orderSchema = mongoose.model('orderList', {
+//     customerName: { type: String, required: true },
+//     address: { type: String, required: true },
+//     city: { type: String, required: true },
+//     pin: { type: String, required: true },
+//     paymentMethod: { type: String, required: true },
+//     quantity: { type: Number, required: true },
+//     total: { type: Number, required: true },
+//     products: [
+//         {
+//             id: { type: Number, required: true },
+//             name: { type: String, required: true },
+//             price: { type: Number, required: true },
+//             quantity: { type: Number, required: true },
+//             total: { type: Number, required: true }
+//         }
+//     ]
+// });
 
 // Adding order to order list
+// app.post('/addorderlist', async (req, res) => {
+//     try {
+//         console.log('Request body:', req.body); // Log the request body to verify the data
+
+//         const order = new orderSchema({
+//             customerName: req.body.customerName,
+//             address: req.body.address,
+//             city: req.body.city,
+//             pin: req.body.pin,
+//             paymentMethod: req.body.paymentMethod,
+//             quantity: req.body.quantity,
+//             total: req.body.total,
+//             products: req.body.products, // This should match the structure sent from frontend
+//         });
+
+//         await order.save();
+//         res.json({
+//             success: true,
+//             message: 'Order placed successfully',
+//         });
+//     } catch (error) {
+//         console.error('Error:', error); // Log the full error
+//         res.status(500).json({
+//             success: false,
+//             message: 'Failed to place order',
+//             error: error.message,
+//         });
+//     }
+// });
+
+const orderSchema = new mongoose.Schema({
+    customerName: String,
+    address: String,
+    city: String,
+    pin: String,
+    paymentMethod: String,
+    quantity: Number,
+    total: Number,
+    products: [{
+        id: String,
+        name: String,
+        price: Number,
+        quantity: Number,
+        total: Number,
+        image: String // Ensure image is included in the schema
+    }]
+});
+
+const OrderList = mongoose.model('OrderList', orderSchema);
+
+// API endpoint to add order list
 app.post('/addorderlist', async (req, res) => {
-    const order = new orderList({
+    const order = new OrderList({
         customerName: req.body.customerName,
         address: req.body.address,
         city: req.body.city,
         pin: req.body.pin,
         paymentMethod: req.body.paymentMethod,
         quantity: req.body.quantity,
-        total: req.body.total
+        total: req.body.total,
+        products: req.body.products // Save product details, including images
     });
-    await order.save();
-    res.json({
-        success: true
-    });
+
+    try {
+        await order.save();
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Error saving order:', error);
+        res.status(500).json({ success: false, message: 'Failed to save order' });
+    }
 });
+
+
+
+
+
+// creatign api for getting all order product 
+
+app.get('/orderProducts', async (req, res) => {
+    let orderProducts = await OrderList.find({})
+    res.send(orderProducts);
+})
 
 // Starting the server
 app.listen(port, (err) => {

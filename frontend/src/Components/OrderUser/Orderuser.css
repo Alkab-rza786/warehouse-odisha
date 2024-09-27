@@ -1,4 +1,4 @@
-.main{
+.main {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -7,39 +7,47 @@
     font-family: pop;
     flex-direction: column;
 }
-.head{
+
+.head {
     text-align: center;
 }
-.head_1{
+
+.head_1 {
     font-size: 30px;
     font-weight: 600;
     color: #333;
 }
-.head_1 span{
+
+.head_1 span {
     color: #ff4732;
 }
-.head_2{
+
+.head_2 {
     font-size: 16px;
     font-weight: 600;
     color: #333;
     margin-top: 3px;
 }
-.unl{
+
+.unl {
     display: flex;
     margin-top: 80px;
 }
-.unl li{
+
+.unl li {
     list-style: none;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.unl li .icon{
+
+.unl li .icon {
     font-size: 35px;
     color: #ff4732;
     margin: 0 60px;
 }
-.unl li .text{
+
+.unl li .text {
     font-size: 14px;
     font-weight: 600;
     color: #ff4732;
@@ -47,7 +55,7 @@
 
 /* Progress Div Css  */
 
-.unl li .progress{
+.unl li .progress {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -59,7 +67,8 @@
     position: relative;
     cursor: pointer;
 }
-.progress::after{
+
+.progress::after {
     content: " ";
     position: absolute;
     width: 125px;
@@ -67,31 +76,39 @@
     background-color: rgba(68, 68, 68, 0.781);
     right: 30px;
 }
-.one::after{
+
+.one::after {
     width: 0;
     height: 0;
 }
-.unl li .progress .uil{
+
+.unl li .progress .uil {
     display: none;
 }
-.unl li .progress p{
+
+.unl li .progress p {
     font-size: 13px;
+    opacity: 100;
 }
 
 /* Active Css  */
 
-.unl li .active{
+.unl li .active {
     background-color: #ff4732;
     display: grid;
     place-items: center;
+    color: #fff;
 }
-li .active::after{
+
+li .active::after {
     background-color: #ff4732;
 }
-.unl li .active p{
+
+.unl li .active p {
     display: none;
 }
-.unl li .active .uil{
+
+.unl li .active .uil {
     font-size: 20px;
     display: flex;
 }
@@ -99,16 +116,19 @@ li .active::after{
 /* Responsive Css  */
 
 @media (max-width: 980px) {
-    .unl{
+    .unl {
         flex-direction: column;
     }
-    .unl li{
+
+    .unl li {
         flex-direction: row;
     }
-    .unl li .progress{
+
+    .unl li .progress {
         margin: 0 30px;
     }
-    .progress::after{
+
+    .progress::after {
         width: 5px;
         height: 55px;
         bottom: 30px;
@@ -116,19 +136,22 @@ li .active::after{
         transform: translateX(-50%);
         z-index: -1;
     }
-    .one::after{
+
+    .one::after {
         height: 0;
     }
-    .unl li .icon{
+
+    .unl li .icon {
         margin: 15px 0;
     }
 }
 
 @media (max-width:600px) {
-    .head .head_1{
+    .head .head_1 {
         font-size: 24px;
     }
-    .head .head_2{
+
+    .head .head_2 {
         font-size: 16px;
     }
 }

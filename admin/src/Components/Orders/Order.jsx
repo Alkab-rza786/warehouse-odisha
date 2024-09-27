@@ -1,23 +1,58 @@
-import React from 'react'
-import './Order.css'
+import React, { useEffect, useState } from 'react';
+import './Order.css';
 
 function Order() {
+  const [orderProduct, setOrderProducts] = useState([]);
+
+  const fetchInfo = async () => {
+    const response = await fetch('http://localhost:4000/orderProducts');
+    const data = await response.json();
+    setOrderProducts(data);
+  };
+
+  useEffect(() => {
+    fetchInfo();
+  }, []);
+
   return (
-    
-      <div className='cart'>
+    <div className='cart'>
       <div className="cart-items">
         <div className="cart-items-title">
+          <p>Image</p>
           <p>Items</p>
-          <p>Title</p>
-          <p>Price</p>
           <p>Quantity</p>
           <p>Total</p>
-          <p>Remove</p>
+
         </div>
         <br />
+      </div>
+
+      {orderProduct.map((order) => (
+        <div key={order._id} className="order-details">
+          {/* Loop through each product in the order */}
+          {order.products.map((product) => (
+            <div key={product.id} className="order-product">
+              <div className="cart-item">
+                <img src={product.image} alt={product.name} className="order-product-image" />
+                <p>{product.name}</p>
+                <p>{product.quantity}</p>
+                <p>${product.total}</p>
+              </div>
+            </div>
+          ))}
+          {/* Display order summary under the respective headings */}
+          <div className="order-summary">
+            <p>Customer's Name: <strong>{order.customerName}</strong></p>
+            <p>Address: <strong>{order.address}</strong></p>
+            <p>Payment Method: <strong>{order.paymentMethod}</strong></p>
+            <p>Total Quantity: <strong>{order.quantity}</strong></p>
+            <p>Total Amount: <strong>${order.total}</strong></p>
+          </div>
+          <hr />
+        </div>
+      ))}
     </div>
-    </div>
-  )
+  );
 }
 
-export default Order
+export default Order;
