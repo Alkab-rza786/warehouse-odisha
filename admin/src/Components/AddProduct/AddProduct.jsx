@@ -1,46 +1,49 @@
-import React from 'react'
-import './AddProduct.css'
-import upload_area from '../../assets/Admin_Assets/upload_area.svg'
-import { useState } from 'react'
+import React, { useState } from 'react';
+import './AddProduct.css';
+import upload_area from '../../assets/Admin_Assets/upload_area.svg';
 
 function AddProduct() {
-
-    const [image, setImage] = useState(false)
+    const [image, setImage] = useState(null);
     const [productDetails, setProductDetails] = useState({
         name: "",
         image: "",
         category: "women",
         new_price: "",
         old_price: ""
-    })
+    });
 
     const changeHandler = (e) => {
-        setProductDetails({ ...productDetails, [e.target.name]: e.target.value })
-    }
+        setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
+    };
 
     const imageHandler = (e) => {
         setImage(e.target.files[0]);
-    }
+    };
 
-    const addproduct = async () => {
-        console.log(productDetails)
+    const addProduct = async () => {
         let responseData;
-        let product = productDetails;
-        let formData = new FormData();
+        const formData = new FormData();
 
         formData.append('product', image);
 
+        // Upload image to Cloudinary
         await fetch('http://localhost:4000/upload', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
             },
             body: formData,
-        }).then((resp) => resp.json()).then((data) => { responseData = data })
+        })
+        .then((resp) => resp.json())
+        .then((data) => { responseData = data });
 
         if (responseData.success) {
-            product.image = responseData.image_url;
-            console.log(product)
+            const product = {
+                ...productDetails,
+                image: responseData.image_url,
+            };
+
+            // Add product details to the database
             await fetch('http://localhost:4000/addproduct', {
                 method: 'POST',
                 headers: {
@@ -48,11 +51,15 @@ function AddProduct() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(product),
-            }).then((resp) => resp.json()).then((data) => {
-                data.success ? alert("Product Added") : alert('Failed')
             })
+            .then((resp) => resp.json())
+            .then((data) => {
+                data.success ? alert("Product Added") : alert('Failed to add product');
+            });
+        } else {
+            alert('Failed to upload image');
         }
-    }
+    };
 
     return (
         <div className='add-product'>
@@ -72,7 +79,7 @@ function AddProduct() {
             </div>
             <div className="addproduct-itemfield">
                 <p>Product Category</p>
-                <select value={productDetails.category} onChange={changeHandler} name="category" className='add-product-selector' >
+                <select value={productDetails.category} onChange={changeHandler} name="category" className='add-product-selector'>
                     <option value="women">Women</option>
                     <option value="men">Men</option>
                     <option value="kid">Kid</option>
@@ -84,10 +91,9 @@ function AddProduct() {
                 </label>
                 <input onChange={imageHandler} type="file" name='image' id='file-input' hidden />
             </div>
-            <button className='addproduct-btn' onClick={() => { addproduct() }} >Add</button>
-
+            <button className='addproduct-btn' onClick={addProduct}>Add</button>
         </div>
-    )
+    );
 }
 
-export default AddProduct
+export default AddProduct;

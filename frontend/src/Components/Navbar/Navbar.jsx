@@ -23,6 +23,7 @@ function Navbar() {
                 <li onClick={() => setMenu("men")} >  <Link to='/mens' >  Men   </Link> {menu === "men" ? <hr /> : ""}  </li>
                 <li onClick={() => setMenu("women")} >  <Link to='/womens' >  Women  </Link>  {menu === "women" ? <hr /> : ""}  </li>
                 <li onClick={() => setMenu("kids")} >  <Link to='/kids' >  Kids  </Link>  {menu === "kids" ? <hr /> : ""}  </li>
+                <li onClick={() => setMenu("My Orders")} >  <Link to='/myorders' > My Orders </Link>  {menu === "myorders" ? <hr /> : ""}  </li>
             </ul>
 
             <div className="nav-login">

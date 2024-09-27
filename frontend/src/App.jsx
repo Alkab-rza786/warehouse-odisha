@@ -10,6 +10,7 @@ import Footer from './Components/Footer/Footer'
 import men_banner from './assets/Frontend_Assets/banner_mens.png'
 import women_banner from './assets/Frontend_Assets/banner_women.png'
 import kid_banner from './assets/Frontend_Assets/banner_kids.png'
+import Orderuser from './Components/OrderUser/Orderuser'
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
           <Route path='/mens' element={<ShopCategory category="men" banner={men_banner} />}  ></Route>
           <Route path='/womens' element={<ShopCategory category="women" banner={women_banner} />} ></Route>
           <Route path='/kids' element={<ShopCategory category="kid" banner={kid_banner} />}  ></Route>
+          <Route path='/myorders' element={<Orderuser/>}  ></Route>
+
           <Route path='/product' element={<Product />} >
             <Route path=':productId' element={<Product />}></Route>
           </Route>
