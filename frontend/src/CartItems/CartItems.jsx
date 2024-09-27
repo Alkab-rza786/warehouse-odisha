@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './CartItems.css'
 import { ShopContext } from '../Components/Context/ShopContext'
 import remove_icon from '../assets/Frontend_Assets/cart_cross_icon.png'
-import { useNavigate } from 'react-router-dom';
 
 
 
@@ -10,7 +9,24 @@ function CartItems() {
 
 
     const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext)
-    const navigate = useNavigate();
+
+    const [order, setOrder] = useState({
+        customerName: "",
+        address: "",
+        city: "",
+        pin: "",
+        paymentMethod: "",
+        quantity: "",
+        total: getTotalCartAmount
+    })
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setOrder({ ...order, [name]: value })
+    }
+
+
+
     return (
         <div className='cartitems'>
             <div className="cartitems-format-main">
@@ -95,7 +111,8 @@ function CartItems() {
     </div>  
                 </div>
             </div>
-      
+    
+
     )
 }
 
