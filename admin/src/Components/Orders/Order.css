@@ -81,19 +81,3 @@
     border-radius: 4px;
     cursor: pointer;
 }
-@media (max-width:750px)
-{
-.cart-bottom{
-    flex-direction: column;
-
-}
-.cart-total{
-    justify-content: start;
-}
-.cart-promocode{
-    justify-content: start;
-}
-.cart-promocode p {
-    width: 100%;
-}
-}
