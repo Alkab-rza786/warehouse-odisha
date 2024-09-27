@@ -20,10 +20,9 @@ function Navbar() {
             </div>
             <ul>
                 <li onClick={() => setMenu("shop")} >  <Link to='/' >  Shop  </Link> {menu === "shop" ? <hr /> : ""}  </li>
-                <li onClick={() => setMenu("men")} >  <Link to='/mens' >  Men   </Link> {menu === "men" ? <hr /> : ""}  </li>
-                <li onClick={() => setMenu("women")} >  <Link to='/womens' >  Women  </Link>  {menu === "women" ? <hr /> : ""}  </li>
-                <li onClick={() => setMenu("kids")} >  <Link to='/kids' >  Kids  </Link>  {menu === "kids" ? <hr /> : ""}  </li>
-                <li onClick={() => setMenu("My Orders")} >  <Link to='/myorders' > My Orders </Link>  {menu === "myorders" ? <hr /> : ""}  </li>
+                <li onClick={() => setMenu("men")} >  <Link to='/mens' >  Groceries  </Link> {menu === "men" ? <hr /> : ""}  </li>
+                <li onClick={() => setMenu("women")} >  <Link to='/womens' >  Electronics  </Link>  {menu === "women" ? <hr /> : ""}  </li>
+                <li onClick={() => setMenu("kids")} >  <Link to='/kids' >  Health and Beauty  </Link>  {menu === "kids" ? <hr /> : ""}  </li>
             </ul>
 
             <div className="nav-login">

@@ -16,7 +16,7 @@ function Hero() {
                         <p>new</p>
                         <img src={hand_icon} alt="" />
                     </div>
-                    <p>collections</p>
+                    <p>Products</p>
                     <p>for everyone</p>
                 </div>
                 <div className="hero-latest-btn">
