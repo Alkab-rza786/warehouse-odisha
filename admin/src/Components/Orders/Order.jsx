@@ -32,8 +32,8 @@ function Order() {
           {/* Loop through each product in the order */}
           {order.products.map((product) => (
             <div key={product.id} className="order-product">
-              <div className="cart-item">
-                <img src={product.image} alt={product.name} className="order-product-image" />
+              <div className="cart-items-title">
+                <img src={product.image} style={{ width: "50px" }} alt={product.name} className="order-product-image" />
                 <p>{product.name}</p>
                 <p>{product.quantity}</p>
                 <p>${product.total}</p>
