@@ -20,20 +20,20 @@ const Dashboard = () => {
       {/* Revenue, Sales Return, Purchase, Income Section */}
       <div className="metrics">
         <div className="metric-card">
-          <p>Revenue</p>
+          <p>Total Products</p>
+          <h3>9</h3>
+        </div>
+        <div className="metric-card">
+          <p>Total Store Value</p>
           <h3>+ 30,000</h3>
         </div>
         <div className="metric-card">
-          <p>Sales Return</p>
-          <h3>+ 30,000</h3>
+          <p>Out of Stock</p>
+          <h3>1</h3>
         </div>
         <div className="metric-card">
-          <p>Purchase</p>
-          <h3>+ 30,000</h3>
-        </div>
-        <div className="metric-card">
-          <p>Income</p>
-          <h3>+ 30,000</h3>
+          <p>All Categories</p>
+          <h3>5</h3>
         </div>
       </div>
 
