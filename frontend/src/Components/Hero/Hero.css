@@ -18,6 +18,7 @@
     color: #090909;
     font-size: 26px;
     font-weight: 600;
+    padding-top: 20px;
 }
 
 .hero-left p {
@@ -60,5 +61,5 @@
 } */
 
 .hero-right img {
-    width: 65%;
+    width: 45%;
 }

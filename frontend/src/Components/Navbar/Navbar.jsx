@@ -16,7 +16,7 @@ function Navbar() {
 
             <div className="nav-logo">
                 <img src={logo} alt="" />
-                <p>SHOPHERE</p>
+                <p>WAREHOUSE</p>
             </div>
             <ul>
                 <li onClick={() => setMenu("shop")} >  <Link to='/' >  Shop  </Link> {menu === "shop" ? <hr /> : ""}  </li>

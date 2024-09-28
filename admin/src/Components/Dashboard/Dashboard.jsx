@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Dashboard.css'; // Custom CSS for styling if required
 
 const Dashboard = () => {
@@ -15,13 +15,34 @@ const Dashboard = () => {
     { orderId: '006', quantity: 500, alertAmt: 60 },
   ];
 
+  const [allproducts, setAllproducts] = useState([]);
+  const [itemNo, setItemno] = useState(0);
+
+  const fetchInfo = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/allproducts');
+      const data = await response.json();
+      setAllproducts(data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchInfo();
+  }, []); // Runs only once when the component mounts
+
+  useEffect(() => {
+    setItemno(allproducts.length); // Updates item count when allproducts changes
+  }, [allproducts]); // Adds allproducts as a dependency
+
   return (
     <div className="dashboard">
       {/* Revenue, Sales Return, Purchase, Income Section */}
       <div className="metrics">
         <div className="metric-card">
           <p>Total Products</p>
-          <h3>9</h3>
+          <h3>{itemNo}</h3>
         </div>
         <div className="metric-card">
           <p>Total Store Value</p>

@@ -392,6 +392,11 @@ app.post('/addorderlist', async (req, res) => {
     }
 });
 
+app.get('/allproducts', async (req, res) => {
+    let products = await Product.find({});
+    res.send(products);
+});
+
 
 
 
