@@ -9,7 +9,8 @@ function AddProduct() {
         image: "",
         category: "women",
         new_price: "",
-        old_price: ""
+        old_price: "",
+        quantity:""
     });
 
     const changeHandler = (e) => {
@@ -84,6 +85,13 @@ function AddProduct() {
                     <option value="men">Men</option>
                     <option value="kid">Kid</option>
                 </select>
+                <div style={{
+                   
+                }}>
+                <p>Quantity</p>
+                    <input className='quantity-input' value={productDetails.quantity} onChange={changeHandler} type="text" name='Quantity' placeholder='Enter the quantity' />
+
+                </div>
             </div>
             <div className="addproduct-itemfield">
                 <label htmlFor="file-input">
