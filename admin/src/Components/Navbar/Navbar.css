@@ -7,9 +7,15 @@
     margin-bottom: 1px;
     background: white;
 }
-
+.navbar .img{
+    display: flex;
+}
+.navbar .img p{
+    font-size: 20px;
+    color:rgb(255, 60, 0);
+}
 .nav-logo {
-    width: 200px;
+    width: 8%;
 }
 
 .nav-profile {
